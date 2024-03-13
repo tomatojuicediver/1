@@ -1,0 +1,41 @@
+def solve_mouse_problem():
+  """
+  Функция для решения задачи про кота и мышей.
+
+  Args:
+    None.
+
+  Returns:
+    Номер мыши, с которой кот должен начать счет.
+  """
+
+  # Список мышей
+  mice = [1] * 12 + [2]
+
+  # Индекс текущей мыши
+  current_mouse = 0
+
+  # Счетчик съеденных мышей
+  eaten_mice = 0
+
+  # Цикл до тех пор, пока не останется одна белая мышь
+  while eaten_mice < 12:
+    # Если текущая мышь не белая
+    if mice[current_mouse] == 1:
+      # Съесть мышь
+      eaten_mice += 1
+      # Переход к следующей мыши
+      current_mouse = (current_mouse + 1) % len(mice)
+
+  # Номер следующей мыши
+  next_mouse = (current_mouse + 1) % len(mice)
+
+  # Возвращение номера мыши, с которой кот должен начать счет
+  return mice[next_mouse]
+
+
+# Решение задачи
+start_mouse = solve_mouse_problem()
+
+# Вывод результата
+print(f"Кот должен начать счет с мыши №{start_mouse}")
