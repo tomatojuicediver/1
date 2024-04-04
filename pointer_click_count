@@ -1,0 +1,27 @@
+import pyautogui
+
+def count_mouse_clicks():
+  """
+  Функция для подсчета щелчков мыши в реальном времени.
+  """
+
+  left_clicks = 0
+  right_clicks = 0
+
+  while True:
+    # Получение события
+    event = pyautogui.event()
+
+    # Подсчет щелчков левой кнопкой
+    if event == "left down":
+      left_clicks += 1
+      print(f"Количество щелчков левой кнопкой: {left_clicks}")
+
+    # Подсчет щелчков правой кнопкой
+    if event == "right down":
+      right_clicks += 1
+      print(f"Количество щелчков правой кнопкой: {right_clicks}")
+
+
+if __name__ == "__main__":
+  count_mouse_clicks()
