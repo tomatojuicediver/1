@@ -1,0 +1,64 @@
+HTML
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Автоматическая смена картинок</title>
+</head>
+<body>
+  <img id="image" src="image1.jpg" alt="Image">
+  <script src="script.js"></script>
+</body>
+</html>
+
+JavaScript
+const imageElement = document.getElementById("image");
+const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
+
+function changeImage() {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  imageElement.src = images[randomIndex];
+}
+
+setInterval(changeImage, 5 * 60 * 1000); // 5 минут
+
+changeImage(); // Запуск смены картинки сразу
+
+Python
+import os
+import random
+
+def get_image_paths():
+  """
+  Функция для получения списка файлов изображений.
+
+  Returns:
+    Список путей к файлам изображений.
+  """
+
+  image_paths = []
+  for file in os.listdir("images"):
+    if file.endswith(".jpg") or file.endswith(".png"):
+      image_paths.append(os.path.join("images", file))
+  return image_paths
+
+
+def main():
+  """
+  Главная функция.
+  """
+
+  image_paths = get_image_paths()
+
+  # Запуск JavaScript-кода
+  # ...
+
+  # Периодическая смена картинки
+  while True:
+    random_index = random.randint(0, len(image_paths) - 1)
+    image_path = image_paths[random_index]
+    # ...
+
+
+if __name__ == "__main__":
+  main()
